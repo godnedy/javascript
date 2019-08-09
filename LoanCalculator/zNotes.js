@@ -1,0 +1,1 @@
+setTimeout(functionToCallAfterTimeou, 2000); //2000 time in mlseconds
