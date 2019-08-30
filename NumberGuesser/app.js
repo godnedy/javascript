@@ -25,6 +25,13 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
+
+function getRandomNumber(min, max){
+  var x = Math.floor((Math.random() * (max-min+1) + min));
+  console.log(x);
+  return x;
+}
+
 // Because of event bubbling we add listener to parent (class 'play-again' appeard after loading the page)
 // mousedown because it is fired before click (so after winning we have a chance to see information about it, otherwise we will
 // have page immediately refreshed, because 'play-again' class is added inside endGame()
@@ -77,10 +84,4 @@ function endGame(won, message) {
 
   guessBtn.value = 'Play again';
   guessBtn.className += 'play-again';
-}
-
-function getRandomNumber(min, max){
-  var x = Math.floor((Math.random() * (max-min+1) + min));
-  console.log(x);
-  return x;
 }
