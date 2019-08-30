@@ -10,7 +10,7 @@ GAME FUNCTION:
 // Game values
 let min = 3,
     max = 10,
-    winningNum = 5,
+    winningNum = getRandomNumber(min, max),
     guessesLeft = 3;
 
 // UI Elements
@@ -25,22 +25,27 @@ const game = document.querySelector('#game'),
 minNum.textContent = min;
 maxNum.textContent = max;
 
+// Because of event bubbling we add listener to parent (class 'play-again' appeard after loading the page)
+// mousedown because it is fired before click (so after winning we have a chance to see information about it, otherwise we will
+// have page immediately refreshed, because 'play-again' class is added inside endGame()
+game.addEventListener('mousedown', function(e){
+  if(e.target.className === 'play-again'){
+    window.location.reload();
+  }
+})
+
 guessBtn.addEventListener('click', function(){
  let guessedNumber = parseInt(guessInput.value);
  let valid = validateGuess(guessedNumber);
  
  if(valid) {
   if(guessedNumber === winningNum) {
-    guessInput.style.borderColor = 'forestgreen';
-    guessInput.disabled = true; 
-    setMessage(`${guessedNumber} is correct! You won!`, 'forestgreen');
+    endGame(true, `${guessedNumber} is correct! You won!`)
   } else {
     guessesLeft -= 1;
 
     if(guessesLeft === 0) {
-      guessInput.style.borderColor = 'violet';
-      guessInput.disabled = true; 
-      setMessage(`Game Over. The correct number was: ${winningNum}`, 'red');
+      endGame(false, `Game Over. The correct number was: ${winningNum}`);
     } else {
       guessInput.style.borderColor = 'red';
       guessInput.value = '';
@@ -58,8 +63,24 @@ function validateGuess(guess){
   }
   return true;
 }
-
+ 
 function setMessage(msg, colour){
   message.textContent = msg;
   message.style.color = colour;
+} 
+
+function endGame(won, message) {
+  won === true ? colour = 'forestgreen' : colour = 'red';
+  guessInput.style.borderColor = colour;
+  guessInput.disabled = true;
+  setMessage(message, colour);
+
+  guessBtn.value = 'Play again';
+  guessBtn.className += 'play-again';
+}
+
+function getRandomNumber(min, max){
+  var x = Math.floor((Math.random() * (max-min+1) + min));
+  console.log(x);
+  return x;
 }
