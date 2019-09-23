@@ -43,7 +43,7 @@ UI.prototype.showAlert = function(message, className){
 
   // remove all with class alert after 3 seconds
   setTimeout(function(){
-    document.querySelector('.alert').remove;
+    document.querySelector('.alert').remove();
   }, 3000);
 }
 // Event Listeners
@@ -67,6 +67,8 @@ document.getElementById('book-form').addEventListener('submit', function(e){
   // Add book to list
   ui.addBookToList(book);
 
+  //show alert 
+  ui.showAlert('Book added!', 'success');
   // Clear fields
   ui.clearFields();
   }
