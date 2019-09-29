@@ -1,0 +1,1 @@
+// array.splice(index, n, newElements..) -- function that removes if no new elements specified (adds if new elemets specified) 'n' elements on 'index' position

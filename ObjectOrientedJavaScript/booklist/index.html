@@ -21,6 +21,9 @@
     .error {
       background: red;
     }
+    .info {
+      background: yellow;
+    }
   </style>
 </head>
 <body>
@@ -39,9 +42,10 @@
           <label for="isbn">ISBN</label>
           <input type="text" id="isbn" class="u-full-width">
       </div>
-      <div>
+      <div id="submitButton">
         <input type="submit" value="Submit" class="u-full-width">
       </div>
+      <button class="u-full-width" id="clearButton">Clear books</button>
     </form>
     <hr>
     <table class="u-full-width">
@@ -56,6 +60,6 @@
       <tbody id="book-list"></tbody>
     </table>
   </div>
-  <script src="app.js"></script>
+  <script src="appes6.js"></script>
 </body>
 </html>
