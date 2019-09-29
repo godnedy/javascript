@@ -76,8 +76,6 @@ class Storage {
 
     books.forEach(function(book){
       const ui  = new UI;
-
-      // Add book to UI
       ui.addBookToList(book);
     });
   }
@@ -85,14 +83,13 @@ class Storage {
   static addBook(book) {
     const books = Storage.getAllBooks();
     books.push(book);
-    console.log(book);
     localStorage.setItem('books', JSON.stringify(books));
   }
 
   static deleteBook(isbn) {
     let books = Storage.getAllBooks();
 
-    books.forEach(function(book, index){  //
+    books.forEach(function(book, index) { 
       if(book.isbn === isbn) {
        books.splice(index, 1);
       }
@@ -106,12 +103,11 @@ class Storage {
 }
 
 // Event Listeners
-
 // DOM Load Event
 document.addEventListener('DOMContentLoaded', Storage.displayBooks);
 // adding a book
 document.getElementById('submitButton').addEventListener('click', function(e){
-  console.log('dupa');
+
   // Get form values
   const title = document.getElementById('title').value,
         author = document.getElementById('author').value,
@@ -119,23 +115,20 @@ document.getElementById('submitButton').addEventListener('click', function(e){
 
   // Instantiate book
   const book = new Book(title, author, isbn);
-  console.log(book);
   // Instantiate UI
   const ui = new UI();
  
   // Validate if it is not adding empty values
-
   if(title === '' || author === '' || isbn === '') {
     ui.showAlert('Some fields are empty. Fill in all fields', 'error');
   } else {
-  // Add book to list
-  ui.addBookToList(book);
-  // Add to local storage
-  Storage.addBook(book);
-  //show alert 
-  ui.showAlert('Book added!', 'success');
-  // Clear fields
-  ui.clearFields();
+    // Add book to list
+    ui.addBookToList(book);
+    // Add to local storage
+    Storage.addBook(book);
+
+    ui.showAlert('Book added!', 'success');
+    ui.clearFields();
   }
   e.preventDefault();
 });
@@ -153,7 +146,6 @@ document.getElementById('book-list').addEventListener('click', function(e){
 })
 
 // deleting all books at once
-
 document.getElementById('clearButton').addEventListener('click', function(){
   
   const ui = new UI();
@@ -162,6 +154,7 @@ document.getElementById('clearButton').addEventListener('click', function(){
 
     ui.deleteAllBooks();
     Storage.deleteAllBooks();
+
     ui.showAlert("All books deleted", 'info');
   }
 })
