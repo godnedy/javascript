@@ -37,7 +37,7 @@ function getJokes(e) {
   }
 
   xhr.logChuck();
-  e.preventDefault();
+  e.preventDefault();  
 }
 
 
