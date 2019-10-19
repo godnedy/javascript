@@ -57,3 +57,23 @@ function runDelete() {
   }
 });
 };
+
+// EasyHTTPFetch
+
+const httpFetch = new EasyHttpFetch();
+
+
+httpFetch.get('https://jsonplaceholder.typicode.com/users')
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+
+// Create user data    
+const dataForFetchPost = {
+  name: 'John',
+  username: 'johnny',
+  email: 'johnny@jcs.com'
+};
+
+httpFetch.post('https://jsonplaceholder.typicode.com/users', dataForFetchPost)
+  .then(response => console.log(response))
+  .catch(error => console.log(error));
