@@ -44,7 +44,7 @@ class EasyHttpAsyncAwait {
         }
       });
       
-    const message = await 'Async deleted';
+    const message = 'Async deleted';
     return message;
   }
     

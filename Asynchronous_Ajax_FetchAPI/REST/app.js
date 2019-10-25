@@ -93,7 +93,7 @@ httpFetch.delete('https://jsonplaceholder.typicode.com/users/2')
 
 const httpAsyncAwait = new EasyHttpAsyncAwait();
 
-httpAsyncAwait.get('https://jsonplaceholder.typicode.com/users')
+httpAsyncAwait.get('https://jsonplaceholder.typicode.com/users/5')
     .then(data => console.log(data))
     .catch(error => console.log(error));
 
