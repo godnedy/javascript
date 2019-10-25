@@ -87,3 +87,33 @@ httpFetch.put('https://jsonplaceholder.typicode.com/users/2', dataForFetchPost)
 httpFetch.delete('https://jsonplaceholder.typicode.com/users/2')
 .then(data => console.log(data))
 .catch(err => console.log(err));
+
+
+// EasyHttpAsyncAwait
+
+const httpAsyncAwait = new EasyHttpAsyncAwait();
+
+httpAsyncAwait.get('https://jsonplaceholder.typicode.com/users')
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+
+// Create user data    
+const dataForAsyncAwaitPost = {
+  name: 'JohnAsync',
+  username: 'johnnyasync',
+  email: 'johnnyasync@jcs.com'
+};
+
+httpAsyncAwait.post('https://jsonplaceholder.typicode.com/users', dataForAsyncAwaitPost)
+  .then(response => console.log(response))
+  .catch(error => console.log(error));
+
+// Update Post
+httpAsyncAwait.put('https://jsonplaceholder.typicode.com/users/3', dataForAsyncAwaitPost)
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+
+// Delete User
+httpAsyncAwait.delete('https://jsonplaceholder.typicode.com/users/3')
+.then(data => console.log(data))
+.catch(err => console.log(err));
