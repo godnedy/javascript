@@ -77,3 +77,13 @@ const dataForFetchPost = {
 httpFetch.post('https://jsonplaceholder.typicode.com/users', dataForFetchPost)
   .then(response => console.log(response))
   .catch(error => console.log(error));
+
+// Update Post
+httpFetch.put('https://jsonplaceholder.typicode.com/users/2', dataForFetchPost)
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+
+// Delete User
+httpFetch.delete('https://jsonplaceholder.typicode.com/users/2')
+.then(data => console.log(data))
+.catch(err => console.log(err));
