@@ -1,17 +1,16 @@
-// // init github
+// init github
 const github = new GitHub();
 
-// //init UI
+// init UI
 const ui = new UI();
 
-// // search input
+// search input
 
 const searchUser = document.getElementById('searchUser');
 
-// // search input event listener
+// search input event listener
 
 searchUser.addEventListener('keyup', (e) => {
-  ui.clearAlert();
   const userText = e.target.value;
 
   if(userText != '') {
@@ -19,14 +18,11 @@ searchUser.addEventListener('keyup', (e) => {
     // make http call
       github.getUser(userText)
       .then(data => {
-        
         if(data.profile.message === 'Not Found') {
-          // show allert
-          // ui.clearAlert();
           ui.showAlert('There is no such user', 'alert alert-danger');
-
         } else {
           ui.showProfile(data.profile);
+          ui.showRepos(data.repos);
         }
       })
     } else {
