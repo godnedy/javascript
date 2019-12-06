@@ -28,11 +28,18 @@ function validateZip() {
 
 }
 function validatePhone() {
+  const re = /^\+?([0-9]{9,12})$/;
+  console.log(re.test(phone.value));
+  if (phone.value.match(re)) {
+    phone.classList.remove('is-invalid');
+  } else {
+    phone.classList.add('is-invalid');
+  }
 
 }
 function validateEmail() {
   const email = document.getElementById('email');
-  const re = /^[0-9]{2}@[0-9]\.$/;
+  const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
   console.log(re.test(email.value));
   if (email.value.match(re)) {
     email.classList.remove('is-invalid');
